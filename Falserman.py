@@ -15,6 +15,10 @@ MAIL_INCM = [".com"]
 
 class Spawner:
     def name(count:int) -> list:
+        """
+        :param count: Quantity produced
+        """
+
         if TC.isInt(count) == False:
             return [f"{random.choice(FIRSTNAME)} {random.choice(LASTNAME)}"]
         Result = []
@@ -23,10 +27,17 @@ class Spawner:
         return Result
     
     def mail(count:int, lenght:int=0, inc:str="<NoInc>") -> list:
+        """
+        :param count: Quantity produced
+        :param lenght: The length of the resulting string (excluding suffixes)
+        :param inc: Mail domain name
+        """
+
         Result = []
         __mailIncName = inc
         __names = ""
         if TC.isInt(lenght) == False:
+            # The mailbox returned if the parameter is provided incorrectly
             return ["ExampleTest@gmail.com"]
         if inc == "<NoInc>":
             __mailIncName = random.choice(MAIL_INCNAME)
