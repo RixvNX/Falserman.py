@@ -66,11 +66,12 @@ class Spawner:
             Result.append(random.randint(eval("1"+lenght*'0'), eval("9"+lenght*'9')))
         return Result
     
-    def password(count:int, lenght:int=0, inString:bool=True, inNumber:bool=True, inSymbol:bool=True):
+    def password(count:int, lenght:int=0, inUpperCase:bool=True, inLowerCase:bool=True, inNumber:bool=True, inSymbol:bool=True):
         """
         :param count: Quantity produced
         :param lenght: The length of the resulting string
-        :param inString: included words in the password
+        :param inUpperCase: included upper words in the password
+        :param inLowerCase: included lower words in the password
         :param inNumber: included number in the password
         :param inSymbol: included symbols in the password
         """
@@ -85,15 +86,17 @@ class Spawner:
         if lenght == 0:
             lenght = random.randint(8, 12)
 
-        if inString == True and inNumber == True and inSymbol == True:
+        if inUpperCase == True and inLowerCase == True and inNumber == True and inSymbol == True:
             __tempWords = FULLY_ABCS+NUMBER+SYMBOLS
-        elif inString == True:
-            __tempWords += FULLY_ABCS
+        elif inUpperCase == True:
+            __tempWords += UPPER_ABCS
+        elif inLowerCase == True:
+            __tempWords += UPPER_ABCS
         elif inNumber == True:
             __tempWords += NUMBER
         elif inSymbol == True:
             __tempWords += SYMBOLS
-        elif inString == False and inNumber == False and inSymbol == False:
+        elif inUpperCase == False and inLowerCase == False and inNumber == False and inSymbol == False:
             return []
         for i in range(count):
             for j in range(lenght):
